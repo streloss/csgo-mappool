@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Панель управления - Map Pool</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-database-compat.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><i class="fas fa-cogs"></i> Панель управления</h1>
+            <nav>
+                <a href="../index.html">Главная</a>
+                <a href="index.html" class="active">Панель управления</a>
+                <button id="logout-btn" class="auth-btn">
+                    <i class="fas fa-sign-out-alt"></i> Выйти
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="admin-hero">
+            <h2>Управление картами</h2>
+            <p>Изменяйте статус и информацию о картах</p>
+        </section>
+
+        <div id="admin-maps-container" class="admin-maps-grid">
+            <!-- Карты для редактирования -->
+            <div class="loading">
+                <i class="fas fa-spinner fa-spin"></i> Загрузка...
+            </div>
+        </div>
+
+        <section class="add-map-section">
+            <h3><i class="fas fa-plus-circle"></i> Добавить новую карту</h3>
+            <form id="add-map-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="new-map-name">Название карты:</label>
+                        <input type="text" id="new-map-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="new-map-id">ID карты (латинскими):</label>
+                        <input type="text" id="new-map-id" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="new-map-description">Описание:</label>
+                    <textarea id="new-map-description" rows="3" required></textarea>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="new-map-banner">URL баннера:</label>
+                        <input type="url" id="new-map-banner" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="new-map-status">Статус:</label>
+                        <select id="new-map-status">
+                            <option value="active">Активна</option>
+                            <option value="inactive">Неактивна</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="btn">
+                    <i class="fas fa-plus"></i> Добавить карту
+                </button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>Панель управления CS:GO Map Pool &copy; 2024</p>
+        </div>
+    </footer>
+
+    <script src="../js/firebase-config.js"></script>
+    <script src="admin.js"></script>
+</body>
+</html>
