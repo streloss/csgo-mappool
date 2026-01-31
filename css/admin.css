@@ -18,6 +18,86 @@
     font-size: 1.1rem;
 }
 
+/* Login Container */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+}
+
+.login-box {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2.5rem;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 400px;
+    border: 2px solid #ff4655;
+    backdrop-filter: blur(10px);
+}
+
+.login-box h2 {
+    color: #ff4655;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.login-box .form-group {
+    margin-bottom: 1.2rem;
+}
+
+.login-box .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #fff;
+    font-weight: 500;
+}
+
+.login-box .form-group input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #333;
+    border-radius: 4px;
+    background: rgba(15, 52, 96, 0.8);
+    color: white;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.login-box .form-group input:focus {
+    outline: none;
+    border-color: #ff4655;
+}
+
+.login-box .btn {
+    background: #ff4655;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 100%;
+    transition: background 0.3s ease;
+    font-size: 1rem;
+    margin-top: 0.5rem;
+}
+
+.login-box .btn:hover {
+    background: #ff2e3e;
+}
+
+.error-message {
+    color: #ff4655;
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}
+
 /* Admin Maps Grid */
 .admin-maps-grid {
     display: grid;
@@ -149,25 +229,23 @@
     margin-bottom: 1rem;
 }
 
-/* Admin Auth Message */
-.auth-message {
-    text-align: center;
-    padding: 3rem;
-    background: rgba(255, 70, 85, 0.1);
-    border-radius: 10px;
-    border: 2px solid #ff4655;
-    margin: 2rem 0;
+/* Auth Button */
+.auth-btn {
+    background: #ff4655;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
-.auth-message h3 {
-    color: #ff4655;
-    margin-bottom: 1rem;
-}
-
-.auth-message .btn {
-    margin-top: 1rem;
-    width: auto;
-    padding: 10px 20px;
+.auth-btn:hover {
+    background: #ff2e3e;
 }
 
 /* Responsive */
@@ -188,5 +266,10 @@
     
     .admin-map-actions {
         align-self: flex-end;
+    }
+    
+    .login-box {
+        padding: 1.5rem;
+        margin: 1rem;
     }
 }
