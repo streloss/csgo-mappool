@@ -4,21 +4,21 @@ const mapsData = [
         id: 'dust2',
         name: 'Dust II',
         description: 'Классическая пустынная карта',
-        bannerUrl: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+        bannerUrl: 'images/dust2.jpg',
         votes: 0
     },
     {
         id: 'mirage',
         name: 'Mirage',
         description: 'Ближневосточная городская карта',
-        bannerUrl: 'https://images.unsplash.com/photo-1511512578047-dfb367046420?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+        bannerUrl: 'images/mirage.jpg',
         votes: 0
     },
     {
         id: 'inferno',
         name: 'Inferno',
         description: 'Итальянская деревня',
-        bannerUrl: 'https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+        bannerUrl: 'images/inferno.jpg',
         votes: 0
     }
 ];
