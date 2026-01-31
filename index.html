@@ -3,16 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CS:GO Map Pool</title>
+    <title>CS:GO Map Pool - Выбор карты</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 </head>
 <body>
     <header>
         <div class="container">
-            <h1><i class="fas fa-map"></i> CS:GO Map Pool</h1>
+            <h1><i class="fas fa-crosshairs"></i> CS:GO Map Veto</h1>
             <nav>
-                <a href="index.html" class="active">Главная</a>
+                <a href="index.html" class="active">Выбор карты</a>
                 <a href="admin/index.html" id="admin-link">Панель управления</a>
                 <span id="user-status">Гость</span>
             </nav>
@@ -21,19 +22,85 @@
 
     <main class="container">
         <section class="hero">
-            <h2>Текущий мап-пул</h2>
-            <p>Активные карты для соревновательной игры</p>
+            <h2>Система выбора карт</h2>
+            <p>Выберите карту для следующей игры. Система работает как на Faceit</p>
+        </section>
+
+        <section class="veto-controls">
+            <div class="veto-info">
+                <h3><i class="fas fa-users"></i> Текущий выбор</h3>
+                <div class="vote-stats">
+                    <div class="vote-count">
+                        <span class="stat-number" id="total-votes">0</span>
+                        <span class="stat-label">Всего голосов</span>
+                    </div>
+                    <button id="reset-votes-btn" class="btn-reset">
+                        <i class="fas fa-redo"></i> Сбросить голоса
+                    </button>
+                </div>
+            </div>
         </section>
 
         <div id="maps-container" class="maps-grid">
             <!-- Карты будут загружены через JavaScript -->
         </div>
+
+        <!-- Контейнер для результатов голосования -->
+        <div class="votes-summary">
+            <h3><i class="fas fa-chart-bar"></i> Результаты голосования</h3>
+            <div id="votes-chart" class="votes-chart">
+                <!-- Диаграмма будет построена через JS -->
+            </div>
+        </div>
     </main>
+
+    <!-- Модальное окно для анимации выбора -->
+    <div id="map-select-modal" class="modal">
+        <div class="modal-content select-animation">
+            <div class="select-header">
+                <div class="countdown" id="countdown">3</div>
+                <h2>Выбор карты...</h2>
+            </div>
+            
+            <div class="select-body">
+                <div class="map-reveal">
+                    <div class="map-icon">
+                        <i class="fas fa-map"></i>
+                    </div>
+                    <h1 id="selected-map-name">Dust II</h1>
+                    <p id="selected-map-desc">Классическая пустынная карта</p>
+                </div>
+                
+                <div class="spinning-cards" id="spinning-cards">
+                    <!-- Анимированные карты будут добавлены через JS -->
+                </div>
+                
+                <div class="select-result">
+                    <p class="result-text">Эта карта выбрана большинством голосов!</p>
+                    <div class="result-stats">
+                        <div class="stat">
+                            <span class="stat-value" id="selected-votes">0</span>
+                            <span class="stat-label">голосов</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value" id="vote-percentage">0%</span>
+                            <span class="stat-label">поддержки</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="select-actions">
+                <button id="close-modal" class="btn">Продолжить</button>
+                <button id="rematch-btn" class="btn btn-secondary">Выбрать снова</button>
+            </div>
+        </div>
+    </div>
 
     <footer>
         <div class="container">
-            <p>CS:GO Map Pool &copy; 2024</p>
-            <p>Все карты принадлежат Valve Corporation</p>
+            <p>CS:GO Map Veto System &copy; 2024</p>
+            <p>Система выбора карт как на Faceit</p>
         </div>
     </footer>
 
