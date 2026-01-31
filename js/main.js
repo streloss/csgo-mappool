@@ -1,14 +1,5 @@
-// DOM Elements
-const mapsContainer = document.getElementById('maps-container');
-const authBtn = document.getElementById('auth-btn');
-const loginModal = document.getElementById('login-modal');
-const closeModal = document.querySelector('.close-modal');
-const loginForm = document.getElementById('login-form');
-const adminLink = document.getElementById('admin-link');
-const loginError = document.getElementById('login-error');
-
-// Default maps data
-const defaultMaps = [
+// Данные карт (изначальные)
+const mapsData = [
     {
         id: 'dust2',
         name: 'Dust II',
@@ -46,71 +37,30 @@ const defaultMaps = [
     }
 ];
 
-// Check authentication state
-auth.onAuthStateChanged((user) => {
-    if (user) {
-        authBtn.innerHTML = '<i class="fas fa-sign-out-alt"></i> Выйти';
-        authBtn.onclick = () => auth.signOut();
+// Проверка авторизации
+function checkAuth() {
+    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+    const userStatus = document.getElementById('user-status');
+    const adminLink = document.getElementById('admin-link');
+    
+    if (isLoggedIn) {
+        userStatus.textContent = 'Администратор';
+        userStatus.style.color = '#ff4655';
         adminLink.style.display = 'block';
     } else {
-        authBtn.innerHTML = '<i class="fas fa-sign-in-alt"></i> Войти';
-        authBtn.onclick = showLoginModal;
+        userStatus.textContent = 'Гость';
+        userStatus.style.color = '#aaa';
         adminLink.style.display = 'none';
     }
-});
-
-// Show login modal
-function showLoginModal() {
-    loginModal.style.display = 'flex';
+    
+    return isLoggedIn;
 }
 
-// Close modal
-closeModal.addEventListener('click', () => {
-    loginModal.style.display = 'none';
-    loginError.textContent = '';
-});
-
-// Login form submission
-loginForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
+// Загрузка карт
+function loadMaps() {
+    const mapsContainer = document.getElementById('maps-container');
+    let maps = JSON.parse(localStorage.getItem('maps')) || mapsData;
     
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-    
-    try {
-        await auth.signInWithEmailAndPassword(email, password);
-        loginModal.style.display = 'none';
-        loginForm.reset();
-        loginError.textContent = '';
-    } catch (error) {
-        loginError.textContent = error.message;
-    }
-});
-
-// Load maps from Firebase or use defaults
-async function loadMaps() {
-    try {
-        const snapshot = await database.ref('maps').once('value');
-        const maps = snapshot.val();
-        
-        if (maps) {
-            displayMaps(Object.values(maps));
-        } else {
-            // Initialize with default maps if no data exists
-            await database.ref('maps').set(defaultMaps.reduce((acc, map, index) => {
-                acc[map.id] = map;
-                return acc;
-            }, {}));
-            displayMaps(defaultMaps);
-        }
-    } catch (error) {
-        console.error('Error loading maps:', error);
-        displayMaps(defaultMaps);
-    }
-}
-
-// Display maps
-function displayMaps(maps) {
     mapsContainer.innerHTML = '';
     
     maps.forEach(map => {
@@ -134,15 +84,8 @@ function displayMaps(maps) {
     });
 }
 
-// Initialize
+// Инициализация
 document.addEventListener('DOMContentLoaded', () => {
+    checkAuth();
     loadMaps();
-    
-    // Close modal when clicking outside
-    window.addEventListener('click', (e) => {
-        if (e.target === loginModal) {
-            loginModal.style.display = 'none';
-            loginError.textContent = '';
-        }
-    });
 });
