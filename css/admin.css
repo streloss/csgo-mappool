@@ -1,0 +1,192 @@
+/* Admin specific styles */
+
+.admin-hero {
+    background: linear-gradient(135deg, #ff4655 0%, #ff2e3e 100%);
+    padding: 2rem;
+    border-radius: 10px;
+    margin: 2rem 0;
+    text-align: center;
+}
+
+.admin-hero h2 {
+    color: white;
+    font-size: 2rem;
+}
+
+.admin-hero p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.1rem;
+}
+
+/* Admin Maps Grid */
+.admin-maps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.admin-map-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #333;
+    transition: all 0.3s ease;
+}
+
+.admin-map-card:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #ff4655;
+}
+
+.admin-map-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.admin-map-name {
+    font-size: 1.3rem;
+    color: #ff4655;
+    font-weight: bold;
+}
+
+.admin-map-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.action-btn {
+    background: none;
+    border: none;
+    color: #aaa;
+    cursor: pointer;
+    font-size: 1.1rem;
+    padding: 5px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.action-btn:hover {
+    color: #ff4655;
+    background: rgba(255, 70, 85, 0.1);
+}
+
+.btn-delete:hover {
+    color: #f44336;
+}
+
+.admin-map-form {
+    margin-top: 1rem;
+}
+
+.admin-form-group {
+    margin-bottom: 1rem;
+}
+
+.admin-form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #aaa;
+    font-size: 0.9rem;
+}
+
+.admin-form-group input,
+.admin-form-group select,
+.admin-form-group textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #333;
+    border-radius: 4px;
+    background: #0f3460;
+    color: white;
+    font-size: 0.9rem;
+}
+
+.admin-form-group textarea {
+    resize: vertical;
+    min-height: 60px;
+}
+
+.save-btn {
+    background: #4CAF50;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 0.5rem;
+    transition: background 0.3s ease;
+}
+
+.save-btn:hover {
+    background: #45a049;
+}
+
+/* Add Map Section */
+.add-map-section {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 2rem;
+    border-radius: 10px;
+    margin: 2rem 0;
+    border: 2px dashed #ff4655;
+}
+
+.add-map-section h3 {
+    color: #ff4655;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+/* Admin Auth Message */
+.auth-message {
+    text-align: center;
+    padding: 3rem;
+    background: rgba(255, 70, 85, 0.1);
+    border-radius: 10px;
+    border: 2px solid #ff4655;
+    margin: 2rem 0;
+}
+
+.auth-message h3 {
+    color: #ff4655;
+    margin-bottom: 1rem;
+}
+
+.auth-message .btn {
+    margin-top: 1rem;
+    width: auto;
+    padding: 10px 20px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .admin-maps-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .admin-map-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    
+    .admin-map-actions {
+        align-self: flex-end;
+    }
+}
